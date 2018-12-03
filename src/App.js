@@ -5,10 +5,12 @@ import Todos from './components/Todos.js'
 import './App.css';
 
 class App extends Component {
+
   render() {
     return (
       <div>
         <TodoInput/>
+        <Todos/>
       </div>
     );
   }

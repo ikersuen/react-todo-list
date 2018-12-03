@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import Todos from './Todos.js'
 
 export default class TodoInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputBox: ''
+      inputBox: '',
+      items: new Array(0).fill(0)
     };
   }
 
@@ -16,10 +18,10 @@ export default class TodoInput extends Component {
   //When Submit press button, onUpdate Todos, inputbox go back empty field
   onSubmit = (event) => {
     event.preventDefault()
-    this.props.onUpdate(this.state.inputBox)
-    this.setState({
+    this.setState(previousState => ({
+        items: [...previousState.items, this.state.inputBox],
         inputBox: ''
-    })
+    }));
   }
 
   render() {
@@ -28,6 +30,7 @@ export default class TodoInput extends Component {
         <form className="App" onSubmit={this.onSubmit}>
         <input type='text' value={this.state.inputBox} onChange={this.update} />
         <button>add</button>
+        {this.state.items.map((element) => <Todos todo={element}/>)}
         </form>
       </div>
     )

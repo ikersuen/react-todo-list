@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
 export default class Todos extends Component {
+
   render() {
     return (
-      <div>
-        
-      </div>
+        <div>{this.props.todo}</div>
     )
   }
 }
+
